@@ -1,4 +1,4 @@
-package questao_01.logic;
+package questao_01_bfs.logic;
 
 import java.util.List;
 
@@ -45,8 +45,8 @@ public class Main {
 		double preco = 10;
 		double autonomia = 10;
 		
-		BellmanFord bellmanFord = new BellmanFord();
-		List<Vertice> caminhoMinimo = bellmanFord.bellmanFord(G, f, e, preco, autonomia);
+		CaminhoMinimoBFS caminhoMinimoBFS = new CaminhoMinimoBFS();
+		List<Vertice> caminhoMinimo = caminhoMinimoBFS.caminhoMinimoBFS(G, f, e, preco, autonomia);
 		
 		System.out.println("Caminho Minimo: ");
 		if(caminhoMinimo == null) {

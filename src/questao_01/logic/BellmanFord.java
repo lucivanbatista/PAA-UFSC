@@ -8,16 +8,16 @@ import questao_01.model.Arco;
 import questao_01.model.Grafo;
 import questao_01.model.Vertice;
 
-public class Dijkstra {
+public class BellmanFord {
 
 	private static double infinity = Double.POSITIVE_INFINITY;
 
-	public Dijkstra() {
+	public BellmanFord() {
 
 	}
 
 	// Abordagem de Caminho Minimo utilizando Busca em Largura (Breadth-First Search, BFS)
-	public List<Vertice> dijkstra(Grafo G, Vertice origem, Vertice destino, double preco, double autonomia) {
+	public List<Vertice> bellmanFord(Grafo G, Vertice origem, Vertice destino, double preco, double autonomia) {
 		inicializacao(G, origem);
 
 		// Fila de Prioridade (Maior prioridade = menor custo)
@@ -67,8 +67,7 @@ public class Dijkstra {
 		origem.estimativa = 0.0;
 	}
 
-	public List<Arco> getArcoByVertice(Grafo G, Vertice u) { // Dentro dos arcos, ele ira procurar as arestas que
-																// possuem esse vertice
+	public List<Arco> getArcoByVertice(Grafo G, Vertice u) { // Dentro dos arcos, ele ira procurar as arestas que possuem esse vertice
 		List<Arco> arestaComIdVertice = new ArrayList<>();// Lista de arcos que possuem esse vertice
 		for (Arco a : G.A) {
 			if (a.verticeInicio.equals(u)) {
