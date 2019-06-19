@@ -2,9 +2,9 @@ package questao_01_bfs.logic;
 
 import java.util.List;
 
-import questao_01.model.Arco;
-import questao_01.model.Grafo;
-import questao_01.model.Vertice;
+import questao_01_bfs.model.Arco;
+import questao_01_bfs.model.Grafo;
+import questao_01_bfs.model.Vertice;
 
 public class Main {
 	
@@ -46,7 +46,7 @@ public class Main {
 		double autonomia = 10;
 		
 		CaminhoMinimoBFS caminhoMinimoBFS = new CaminhoMinimoBFS();
-		List<Vertice> caminhoMinimo = caminhoMinimoBFS.caminhoMinimoBFS(G, f, e, preco, autonomia);
+		List<Vertice> caminhoMinimo = caminhoMinimoBFS.caminhoMinimoBFS(G, a, e, preco, autonomia);
 		
 		System.out.println("Caminho Minimo: ");
 		if(caminhoMinimo == null) {

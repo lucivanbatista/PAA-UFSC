@@ -6,7 +6,6 @@ public class Vertice implements Comparable<Vertice>{
 	public double estimativa;
 	public double pedagio;
 	public Vertice antecessor;
-	public boolean visitar;
 	
 	public Vertice() {
 		this.estimativa = 0;

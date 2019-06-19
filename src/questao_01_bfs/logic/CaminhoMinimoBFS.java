@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-import questao_01.model.Arco;
-import questao_01.model.Grafo;
-import questao_01.model.Vertice;
+import questao_01_bfs.model.Arco;
+import questao_01_bfs.model.Grafo;
+import questao_01_bfs.model.Vertice;
 
 public class CaminhoMinimoBFS {
 
