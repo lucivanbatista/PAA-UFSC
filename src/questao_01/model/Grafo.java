@@ -25,7 +25,4 @@ public class Grafo {
 	public void addAresta(Arco a) {
 		this.A.add(a);
 	} 
-	
-	
-	
 }

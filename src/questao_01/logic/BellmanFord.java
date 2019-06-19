@@ -8,33 +8,31 @@ import questao_01.model.Grafo;
 import questao_01.model.Vertice;
 
 public class BellmanFord {
-
 	private static double infinity = Double.POSITIVE_INFINITY;
 
-	public BellmanFord() {
-
-	}
-
-	public List<Vertice> bellmanFord(Grafo G, Vertice origem, Vertice destino, double preco, double autonomia) {
-		inicializacao(G, origem);
+	public List<Vertice> bellmanFordAdaptado(Grafo G, Vertice s, Vertice t, double precoCombustivel, double autonomia) {
+		inicializacao(G, s);
 
 		for (int i = 1; i < G.V.size(); i++) { // Para o total de vertices - 1
-			for (Arco a : G.A) { // Para cada aresta
+			for (Arco a : G.A) { // Para cada arco
 				Vertice u = a.verticeInicio;
-				double uEstimativa = u.estimativa;
 				Vertice v = a.verticeDestino;
+				double uEstimativa = u.estimativa;
 				double vEstimativa = v.estimativa;
-				double custoa = a.custo(preco, autonomia);
+				// Calculo do custo do arco a para o vertice v
+				double custoa = a.custo(precoCombustivel, autonomia);
+				// Relaxamento
 				if (vEstimativa > (uEstimativa + custoa)) {
 					v.estimativa = uEstimativa + custoa;
 					v.antecessor = u;
 				}
 			} 
 		}
-		// Sera retornado a menor estimativa da distancia ate o destino
-		return returnPath(G.V, destino);
+		// Retorno do caminho minimo ate o vertice de destino t
+		return caminhoMinimo(G.V, t);
 	}
 
+	// Inicializacao dos atributos
 	public void inicializacao(Grafo G, Vertice origem) {
 		for (Vertice v : G.V) {
 			v.estimativa = infinity;
@@ -43,18 +41,20 @@ public class BellmanFord {
 		origem.estimativa = 0.0;
 	}
 
-	public List<Vertice> returnPath(List<Vertice> V, Vertice destino) {
+	// Retorna o Caminho Minimo
+	public List<Vertice> caminhoMinimo(List<Vertice> V, Vertice t) {
 		List<Vertice> caminhoMinimo = new ArrayList<>();
-		if (destino.estimativa == infinity) {
+		if (t.estimativa == infinity) {
 			return null;
 		} else {
-			return getAntecessor(caminhoMinimo, destino);
+			return getAntecessores(caminhoMinimo, t);
 		}
 	}
 
-	public List<Vertice> getAntecessor(List<Vertice> caminhoMinimo, Vertice v) {
+	// Metodo recursivo para adicionar o antecessor a uma lista
+	public List<Vertice> getAntecessores(List<Vertice> caminhoMinimo, Vertice v) {
 		if (v != null) {
-			getAntecessor(caminhoMinimo, v.antecessor);
+			getAntecessores(caminhoMinimo, v.antecessor);
 			caminhoMinimo.add(v);
 			return caminhoMinimo;
 		}
