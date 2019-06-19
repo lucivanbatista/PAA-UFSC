@@ -1,10 +1,12 @@
-package logic;
+package questao_01.logic;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
 
-import model.*;
+import questao_01.model.Arco;
+import questao_01.model.Grafo;
+import questao_01.model.Vertice;
 
 public class Dijkstra {
 
@@ -20,27 +22,27 @@ public class Dijkstra {
 		PriorityQueue<Vertice> fila = new PriorityQueue<>(); //Fila de Prioridade (Maior prioridade = menor custo)
 		fila.add(origem);
 		
-		while(!fila.isEmpty()){ //Enquanto a fila de prioridade não estiver vazia, faça
-			Vertice u = fila.poll(); // Ele irá remover o head da fila e irá armazenar no vértice u
+		while(!fila.isEmpty()){ //Enquanto a fila de prioridade nï¿½o estiver vazia, faï¿½a
+			Vertice u = fila.poll(); // Ele irï¿½ remover o head da fila e irï¿½ armazenar no vï¿½rtice u
 			
-			if(u.visitar == false){ // Se ainda não foi visitado, então visitaremos
-				u.visitar = true; // Depois não será mais usado
+			if(u.visitar == false){ // Se ainda nï¿½o foi visitado, entï¿½o visitaremos
+				u.visitar = true; // Depois nï¿½o serï¿½ mais usado
 				double uEstimativa = u.estimativa; // Irei pegar a distancia do u e armazenar na estimativa
 				
-				for(Arco a : getArcoByVertice(G, u)){ // Para cada aresta que possui o u, então irei...
+				for(Arco a : getArcoByVertice(G, u)){ // Para cada aresta que possui o u, entï¿½o irei...
 					Vertice v = a.verticeDestino; // pegar o outro vertice da ponta 2 da aresta e irei comparar a estimativa com o u (ponta 1)
 					double vEstimativa = v.estimativa; // Estimativa do vertice da ponta 2
 					
 					double custoa = a.custo(preco, autonomia);
 					if(vEstimativa > (uEstimativa + custoa)){ // Se a estimativa do vertice da ponta 2, for maior que a estimativa do vertice u (ponta 1)
-						v.estimativa = uEstimativa + custoa; //com o custo da aresta, então a estimativa da ponta 2, será a soma da ponta 1 + o custo da aresta;
+						v.estimativa = uEstimativa + custoa; //com o custo da aresta, entï¿½o a estimativa da ponta 2, serï¿½ a soma da ponta 1 + o custo da aresta;
 						v.antecessor = u;
 						fila.add(v); // Adicionando na fila de prioridades
 					} 
-				} // O while vai se repetir até todos os vértices possuirem uma estimativa
+				} // O while vai se repetir atï¿½ todos os vï¿½rtices possuirem uma estimativa
 			}
 		}
-		return returnPath(G.V, destino); // Será retornado a menor estimativa da distancia até o idDestino
+		return returnPath(G.V, destino); // Serï¿½ retornado a menor estimativa da distancia atï¿½ o idDestino
 	}
 	
 	public void inicializacao(Grafo G, Vertice origem){
@@ -52,8 +54,8 @@ public class Dijkstra {
 		origem.estimativa = 0.0;
 	}	
 	
-	public List<Arco> getArcoByVertice(Grafo G, Vertice u){ // Dentro dos arcos, ele irá procurar as arestas que possuem esse vértice
-		List<Arco> arestaComIdVertice = new ArrayList<>();// Lista de arcos que possuem esse vértice
+	public List<Arco> getArcoByVertice(Grafo G, Vertice u){ // Dentro dos arcos, ele irï¿½ procurar as arestas que possuem esse vï¿½rtice
+		List<Arco> arestaComIdVertice = new ArrayList<>();// Lista de arcos que possuem esse vï¿½rtice
 		for(Arco a : G.A){
 			if(a.verticeInicio.equals(u)){
 				arestaComIdVertice.add(a);

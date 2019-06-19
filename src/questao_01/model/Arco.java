@@ -1,4 +1,4 @@
-package model;
+package questao_01.model;
 
 public class Arco {
 

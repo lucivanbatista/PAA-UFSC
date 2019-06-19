@@ -1,12 +1,12 @@
-package logic;
+package questao_01.logic;
 
 import java.util.List;
 
-import model.Arco;
-import model.Grafo;
-import model.Vertice;
+import questao_01.model.Arco;
+import questao_01.model.Grafo;
+import questao_01.model.Vertice;
 
-public class Teste {
+public class Main {
 	
 	public static void teste1(){ // Teste para Dijkstra
 		Grafo G = new Grafo();
@@ -48,15 +48,15 @@ public class Teste {
 		Dijkstra dijkstra = new Dijkstra();
 		List<Vertice> caminhoMinimo = dijkstra.dijkstra(G, f, e, preco, autonomia);
 		
-		System.out.println("Caminho Mínimo: ");
+		System.out.println("Caminho Mï¿½nimo: ");
 		if(caminhoMinimo == null) {
-			System.out.println("Não tem caminho!");
-			System.out.println("Custo Mínimo: " + Double.POSITIVE_INFINITY);
+			System.out.println("Nï¿½o tem caminho!");
+			System.out.println("Custo Mï¿½nimo: " + Double.POSITIVE_INFINITY);
 		}else {
 			for (Vertice v: caminhoMinimo) {
 				System.out.print(v.id + " ");
 			}
-			System.out.println("\nCusto Mínimo: " + caminhoMinimo.get(caminhoMinimo.size() - 1).estimativa);
+			System.out.println("\nCusto Mï¿½nimo: " + caminhoMinimo.get(caminhoMinimo.size() - 1).estimativa);
 		}
 	}
 		
