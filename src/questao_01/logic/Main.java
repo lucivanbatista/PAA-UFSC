@@ -8,7 +8,7 @@ import questao_01.model.Vertice;
 
 public class Main {
 	
-	public static void teste1(){ // Teste para Dijkstra
+	public static void teste1(){
 		Grafo G = new Grafo();
 		Vertice a = new Vertice(1, 0);
 		Vertice b = new Vertice(2, 0);
@@ -48,15 +48,15 @@ public class Main {
 		Dijkstra dijkstra = new Dijkstra();
 		List<Vertice> caminhoMinimo = dijkstra.dijkstra(G, f, e, preco, autonomia);
 		
-		System.out.println("Caminho M�nimo: ");
+		System.out.println("Caminho Minimo: ");
 		if(caminhoMinimo == null) {
-			System.out.println("N�o tem caminho!");
-			System.out.println("Custo M�nimo: " + Double.POSITIVE_INFINITY);
+			System.out.println("Nao tem caminho!");
+			System.out.println("Custo Minimo: " + Double.POSITIVE_INFINITY);
 		}else {
 			for (Vertice v: caminhoMinimo) {
 				System.out.print(v.id + " ");
 			}
-			System.out.println("\nCusto M�nimo: " + caminhoMinimo.get(caminhoMinimo.size() - 1).estimativa);
+			System.out.println("\nCusto Minimo: " + caminhoMinimo.get(caminhoMinimo.size() - 1).estimativa);
 		}
 	}
 		
