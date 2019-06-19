@@ -31,7 +31,7 @@ public class BellmanFord {
 				}
 			} 
 		}
-		// Sera retornado a menor estimativa da distancia ate o idDestino
+		// Sera retornado a menor estimativa da distancia ate o destino
 		return returnPath(G.V, destino);
 	}
 

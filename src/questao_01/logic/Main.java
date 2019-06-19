@@ -45,8 +45,9 @@ public class Main {
 		double preco = 10;
 		double autonomia = 10;
 		
+		// Execução do BellmanFord e retorno do caminho mínimo juntamente com o custo mínimo
 		BellmanFord bellmanFord = new BellmanFord();
-		List<Vertice> caminhoMinimo = bellmanFord.bellmanFord(G, a, e, preco, autonomia);
+		List<Vertice> caminhoMinimo = bellmanFord.bellmanFord(G, f, e, preco, autonomia);
 		
 		System.out.println("Caminho Minimo: ");
 		if(caminhoMinimo == null) {
