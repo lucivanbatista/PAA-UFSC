@@ -30,17 +30,17 @@ public class MultiplasMochilas {
 	    // PesoLivre é referente a capacidade maxima do caminhao atual
 	    // OBSERVAOCAO ESTOU PEGANDO SÓ O 1º PARA TESTE
 	    double pesoLivre = T.get(0).cargaMaxima;
-	    int melhorValor = 0;
+//	    int melhorValor = 0;
 	    
 	    for(Item g : G){
 	        if(g.peso <= pesoLivre){
 	            pesoLivre -= g.peso;
-	            melhorValor += g.valor;
+//	            melhorValor += g.valor;
 	            melhorCaso.add(g);
 	        }
 	    }
 	    
-	    System.out.println("peso melhor para este caminhao: " + melhorValor);
+//	    System.out.println("peso melhor para este caminhao: " + melhorValor);
 	    int sum = 0;
 	    for(Item g : melhorCaso) {
 	    	System.out.println(g);
