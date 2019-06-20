@@ -7,10 +7,10 @@ public class Arco {
 	public double peso;
 	
 	
-	public Arco(Vertice verticeInicio, Vertice verticeDestino, double custo) {
+	public Arco(Vertice verticeInicio, Vertice verticeDestino, double peso) {
 		this.verticeInicio = verticeInicio;
 		this.verticeDestino = verticeDestino;
-		this.peso = custo;
+		this.peso = peso;
 	}
 	
 	public double custo(double preco, double autonomia) {
