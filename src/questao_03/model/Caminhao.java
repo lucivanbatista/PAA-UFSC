@@ -1,17 +1,26 @@
 package questao_03.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Caminhao implements Comparable<Caminhao>{
 
 	public int id;
 	public double cargaMaxima;
-	
-	public Caminhao() {
-		
-	}
+	public double capacidadeAtual; // Peso que ainda cabe neste caminhao
+	public List<Item> itensNaCarga;
+	public int valorItensNaCarga;
 	
 	public Caminhao(int id, double cargaMaxima) {
 		this.id = id;
 		this.cargaMaxima = cargaMaxima;
+		this.itensNaCarga = new ArrayList<>();
+		this.valorItensNaCarga = 0;
+		this.capacidadeAtual = cargaMaxima;
+	}
+	
+	public void addItem(Item i) {
+		this.itensNaCarga.add(i);
 	}
 	
 	@Override
@@ -27,6 +36,6 @@ public class Caminhao implements Comparable<Caminhao>{
 	
 	@Override
 	public String toString() {
-		return "id = " + this.id + "; cargaMaxima = " + this.cargaMaxima;
+		return "id = " + this.id + "; cargaMaxima = " + this.cargaMaxima + "; capacidade restante: " + this.capacidadeAtual + "; valor dos itens: " + this.valorItensNaCarga;
 	}
 }

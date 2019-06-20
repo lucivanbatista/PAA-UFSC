@@ -6,8 +6,9 @@ public class Item implements Comparable<Item>{
 	public int peso;
 	public int valor;
 	
-	public Item() {
-		
+	public Item(int peso, int valor) {
+		this.peso = peso;
+		this.valor = valor;
 	}
 	
 	public Item(String descricao, int peso, int valor) {
@@ -18,10 +19,10 @@ public class Item implements Comparable<Item>{
 	
 	@Override
 	public int compareTo(Item i) {
-		if (this.valor < i.valor) {
+		if (this.valor > i.valor) {
             return -1;
         }
-        if (this.valor > i.valor) {
+        if (this.valor < i.valor) {
             return 1;
         }
         return 0;
