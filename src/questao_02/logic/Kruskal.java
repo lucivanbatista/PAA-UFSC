@@ -43,7 +43,7 @@ public class Kruskal {
 			if(grupoA != grupoB) {
 				// Adicionar na Arvore Geradora Minima
 				this.MST.add(e);
-				// Incrementar no contador dos vertices na arvore
+				// Incrementar no contador dos vertices a aresta selecionada
 				this.countArestas.put(e.verticeA, this.countArestas.get(e.verticeA) + 1);
 				this.countArestas.put(e.verticeB, this.countArestas.get(e.verticeB) + 1);
 				// Somar o novo valor ao Custo Minimo
