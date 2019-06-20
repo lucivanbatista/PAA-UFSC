@@ -46,9 +46,6 @@ public class Kruskal {
 				this.custoMinimo += e.peso;
 				// Juntar em um novo grupo todos os vertices do mesmo grupo de A
 				// e todos os vertices do mesmo grupo de B
-				// ** Nesta versão, em vez de iterar por todos os vértices todas
-				// as vezes, ele apenas une os vértices do grupo B em A.
-				// (pode melhoras o desempenho para o melhor e médio casos)
 				e.verticeA.grupo.union(e.verticeB.grupo);
 			}
 		}
