@@ -10,14 +10,14 @@ public class Main {
 	
 	public static void teste1(){
 		Grafo G = new Grafo();
-		Vertice a = new Vertice(1, 0);
-		Vertice b = new Vertice(2, 0);
-		Vertice c = new Vertice(3, 0);
-		Vertice d = new Vertice(4, 0);
-		Vertice t = new Vertice(5, 0);
-		Vertice s = new Vertice(6, 0);
-		Vertice g = new Vertice(7, 0);
-		Vertice h = new Vertice(8, 0);
+		Vertice a = new Vertice(1, 3);
+		Vertice b = new Vertice(2, 1);
+		Vertice c = new Vertice(3, 6);
+		Vertice d = new Vertice(4, 8);
+		Vertice t = new Vertice(5, 10);
+		Vertice s = new Vertice(6, 1);
+		Vertice g = new Vertice(7, 12);
+		Vertice h = new Vertice(8, 9);
 		
 		G.addVertice(a);
 		G.addVertice(b);
@@ -47,7 +47,7 @@ public class Main {
 		
 		// Execucao do BellmanFord e retorno de uma lista de vertices representando o caminho minimo
 		// O custo e feito atraves da estivamitva do vertice t 
-		List<Vertice> caminhoMinimo = new BellmanFord().bellmanFordAdaptado(G, s, t, precoCombustivel, autonomia);
+		List<Vertice> caminhoMinimo = new BellmanFord().bellmanFordAdaptado(G, g, t, precoCombustivel, autonomia);
 		
 		System.out.println("Caminho Minimo: ");
 		if(caminhoMinimo == null) {
