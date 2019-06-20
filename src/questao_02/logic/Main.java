@@ -8,7 +8,7 @@ import questao_02.model.Vertice;
 
 public class Main {
 
-	public static Grafo teste1(){
+	public static Grafo criacaoGrafoTeste(){
 		Grafo G = new Grafo();
 		Vertice a = new Vertice(1);
 		Vertice b = new Vertice(2);
@@ -36,7 +36,7 @@ public class Main {
 	}
 		
 	public static void main(String[] args) {
-		Grafo G = teste1();
+		Grafo G = criacaoGrafoTeste();
 		Kruskal k = new Kruskal();
 		
 		List<Aresta> MST = k.kruskalAdaptado(G);
