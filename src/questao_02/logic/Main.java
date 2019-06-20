@@ -1,12 +1,14 @@
 package questao_02.logic;
 
+import java.util.List;
+
 import questao_02.model.Aresta;
 import questao_02.model.Grafo;
 import questao_02.model.Vertice;
 
 public class Main {
 
-	public static void teste1(){
+	public static Grafo teste1(){
 		Grafo G = new Grafo();
 		Vertice a = new Vertice(1);
 		Vertice b = new Vertice(2);
@@ -30,11 +32,21 @@ public class Main {
 		G.addAresta(new Aresta(b, e, 2));
 		G.addAresta(new Aresta(b, f, 4));
 		
-		new Kruskal().execucaoKruskal(G);
+		return G;
 	}
 		
 	public static void main(String[] args) {
-		teste1();
+		Grafo G = teste1();
+		Kruskal k = new Kruskal();
+		
+		List<Aresta> MST = k.kruskalAdaptado(G);
+		System.out.println("* Arvore Geradora Minima - Linhas de transmissao de menor custo: ");
+		k.showVerticesArvoreGeradoraMinima(MST);
+		
+		System.out.println("* Custo Minimo das linhas de transmissao: \n	" + k.custoMinimo);
+		
+		System.out.println("* Cidades com mais de 3 linhas de transmissao: ");
+		k.getArestasAdjacentes();
 	}
 
 }

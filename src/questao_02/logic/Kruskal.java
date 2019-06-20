@@ -61,16 +61,6 @@ public class Kruskal {
 		return MST;
 	}
 	
-	public double execucaoKruskal(Grafo G) {
-		List<Aresta> MST = kruskalAdaptado(G);
-		System.out.println("Arvore Geradora Minima: ");
-		showVerticesArvoreGeradoraMinima(MST);
-		System.out.println("Custo Minimo: " + this.custoMinimo);
-		System.out.println("Vertices com mais de 3 arestas: ");
-		this.getArestasAdjacentes();
-		return 0;
-	}
-	
 	// Mostrar Vertices e Peso da Arvore Geradora Minima
 	public void showVerticesArvoreGeradoraMinima(List<Aresta> MST) {
 		for(Aresta ar : MST) {
@@ -82,7 +72,7 @@ public class Kruskal {
 	public void getArestasAdjacentes() {
 		for(Vertice h : this.countArestas.keySet()) {
 			if(this.countArestas.get(h) > 3) {
-				System.out.println(h.id);
+				System.out.println("	" + h.id);
 			}
 		}
 	}
