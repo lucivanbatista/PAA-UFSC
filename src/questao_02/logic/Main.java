@@ -30,7 +30,7 @@ public class Main {
 		G.addAresta(new Aresta(b, e, 2));
 		G.addAresta(new Aresta(b, f, 4));
 		
-		new Kruskall().execucaoKruskall(G);
+		new Kruskal().execucaoKruskal(G);
 	}
 		
 	public static void main(String[] args) {

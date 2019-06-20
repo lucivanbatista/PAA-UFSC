@@ -10,18 +10,18 @@ import questao_02.model.Aresta;
 import questao_02.model.Grafo;
 import questao_02.model.Vertice;
 
-public class Kruskall {
+public class Kruskal {
 	List<Aresta> MST; // Arvore Geradora Minima
 	double custoMinimo; // Custo Minimo da Arvore
     Map<Vertice,Integer> countArestas; // Contador dos vertices presentes na Arvore
 	
-	public Kruskall() {
+	public Kruskal() {
 		this.custoMinimo = 0;
 		this.MST = new ArrayList<>();
 		countArestas = new HashMap<Vertice,Integer>();
 	}
 
-	public List<Aresta> kruskallAdaptado(Grafo G){
+	public List<Aresta> kruskalAdaptado(Grafo G){
 		// Contador dos grupos
 		int i = 1;
 		// Criar grupos para cada vertice
@@ -61,8 +61,8 @@ public class Kruskall {
 		return MST;
 	}
 	
-	public double execucaoKruskall(Grafo G) {
-		List<Aresta> MST = kruskallAdaptado(G);
+	public double execucaoKruskal(Grafo G) {
+		List<Aresta> MST = kruskalAdaptado(G);
 		System.out.println("Arvore Geradora Minima: ");
 		showVerticesArvoreGeradoraMinima(MST);
 		System.out.println("Custo Minimo: " + this.custoMinimo);
