@@ -32,8 +32,8 @@ public class MochilaMultipla {
 	}
 	
 	public Tupla<List<Item>, Integer> mochila(Caminhao t, List<Item> G) {
-		// Implementação de uma Matriz Esparsa 
-		// (baseada em HashMap, futuramente poderia ser outra implementação mais eficiente)
+		// Implementação de uma Matriz Esparsa - baseada em HashMap 
+		// (futuramente poderia ser outra implementação mais eficiente)
 		MatrizEsparsa<Long, Item, Integer> M = new MatrizEsparsa<Long, Item, Integer>(0);
 		
 		// Representação do item anterior 
