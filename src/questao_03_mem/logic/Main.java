@@ -41,8 +41,10 @@ public class Main {
 		List<Item> G = criarItens();
 
 		MochilaMultiplaProgDinAdaptado m = new MochilaMultiplaProgDinAdaptado();
+		// O resultado sera armazenado nas estruturas T e G
 		m.multiplaCarga(T, G);
 		
+		// Imprimira o resultado
 		printInformacaoCaminhoesAtual(T);
 		printItensNaoEntregues(G);
 	}
