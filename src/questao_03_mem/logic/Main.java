@@ -63,7 +63,7 @@ public class Main {
 		for(Item g : G) {
 			System.out.println("	" + g);
 			lucroPerdido += g.valor;
-		}
+		} 
 		System.out.println("\nLucro Total Perdido: " + lucroPerdido);
 	}
 
