@@ -3,6 +3,9 @@ package questao_03_mem.model;
 /**
  * Clase para representar uma tupla de dois elementos genéricos.
  * 
+ * @author Tarlis Portela 
+ * @author Lucivan Batista
+ * 
  */
 public class Tupla<I,J> {
 	

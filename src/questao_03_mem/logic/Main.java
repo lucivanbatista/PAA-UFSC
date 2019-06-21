@@ -1,10 +1,10 @@
 package questao_03_mem.logic;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import questao_03_mem.model.*;
+import questao_03_mem.model.Caminhao;
+import questao_03_mem.model.Item;
 
 public class Main {
 
@@ -39,11 +39,8 @@ public class Main {
 	public static void main(String[] args) {
 		List<Caminhao> T = criarCaminhoes();
 		List<Item> G = criarItens();
-		
-		Collections.sort(G);
-		printItensNaoEntregues(G);
 
-		MochilaMultipla m = new MochilaMultipla();
+		MochilaMultiplaProgDinAdaptado m = new MochilaMultiplaProgDinAdaptado();
 		m.multiplaCarga(T, G);
 		
 		printInformacaoCaminhoesAtual(T);
