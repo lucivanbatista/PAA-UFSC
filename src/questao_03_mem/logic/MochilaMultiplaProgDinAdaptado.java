@@ -49,17 +49,21 @@ public class MochilaMultiplaProgDinAdaptado {
 					M.set(i, j, M.get(iAnterior, j));
 				} else {
 					// escolhe a melhor solucao entre: a anterior calculada ou com  adicao do item
-					M.set(i, j, max(M.get(iAnterior, j), i.valor + M.get(iAnterior, j - i.peso)));
+					M.set(i, j, max(M.get(iAnterior, j), 1 + M.get(iAnterior, j - i.peso)));
 				}
 			}
 			// Atualiza o indice J (objeto)
 			iAnterior = i;
 		}
 
-		// Extrai o melhor valor (lucro) -> ultima posicao da matriz 
-		int melhorValor = M.get(iAnterior, (long) t.cargaMaxima);
 		// Extrai os itens da solucao otima (OPT)
 		List<Item> melhorCaso = getOPT(t, G, M);
+		
+		// Calcula o melhor valor (lucro) 
+		int melhorValor = 0;
+		for (Item i : melhorCaso) {
+			melhorValor += i.valor;
+		}
 		
 		return new Tupla<List<Item>, Integer>(melhorCaso, melhorValor);
 	}
