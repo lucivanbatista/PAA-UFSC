@@ -49,7 +49,7 @@ public class MochilaMultiplaProgDinAdaptado {
 					M.set(i, j, M.get(iAnterior, j));
 				} else {
 					// escolhe a melhor solucao entre: a anterior calculada ou com  adicao do item
-					M.set(i, j, max(M.get(iAnterior, j), 1 + M.get(iAnterior, j - i.peso)));
+					M.set(i, j, max(M.get(iAnterior, j), (i.valor+1) + M.get(iAnterior, j - i.peso)));
 				}
 			}
 			// Atualiza o indice J (objeto)
