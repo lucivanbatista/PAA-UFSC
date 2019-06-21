@@ -34,46 +34,46 @@ public class MochilaMultiplaProgDinAdaptado {
 	public Tupla<List<Item>, Integer> mochilaProgDinAdaptado(Caminhao t, List<Item> G) {
 		// Implementacao de uma Matriz Esparsa - baseada em HashMap 
 		// (futuramente poderia ser outra implementacao mais eficiente)
-		MatrizEsparsa<Long, Item, Integer> M = new MatrizEsparsa<Long, Item, Integer>(0);
+		MatrizEsparsa<Item, Long, Integer> M = new MatrizEsparsa<Item, Long, Integer>(0);
 		
 		// Representacao do item anterior 
 		// (linha acima da atual na matrix, pois o indice J representa o objeto Item)
-		Item anterior = null;
+		Item iAnterior = null;
 		// Para cada item:
-		for(Item g : G){
-			// Para cada capacidade possivel da mochila (indice I)
+		for(Item i : G){
+			// Para cada capacidade possivel da mochila (indice J)
 			long cargaMaxima = (long) t.cargaMaxima;
-			for (long i = 1; i <= cargaMaxima; i++) {
-				if (i < g.peso) {
-					// se nao couber, usa o valor da linha de cima encontrado 
-					M.set(i, g, M.get(i, anterior));
+			for (long j = 1; j <= cargaMaxima; j++) {
+				if (j < i.peso) {
+					// se nao couber, usa o valor da coluna anterior 
+					M.set(i, j, M.get(iAnterior, j));
 				} else {
 					// escolhe a melhor solucao entre: a anterior calculada ou com  adicao do item
-					M.set(i, g, max(M.get(i, anterior), g.valor + M.get(i - g.peso, anterior)));
+					M.set(i, j, max(M.get(iAnterior, j), i.valor + M.get(iAnterior, j - i.peso)));
 				}
 			}
 			// Atualiza o indice J (objeto)
-			anterior = g;
+			iAnterior = i;
 		}
 
 		// Extrai o melhor valor (lucro) -> ultima posicao da matriz 
-		int melhorValor = M.get((long) t.cargaMaxima, anterior);
+		int melhorValor = M.get(iAnterior, (long) t.cargaMaxima);
 		// Extrai os itens da solucao otima (OPT)
 		List<Item> melhorCaso = getOPT(t, G, M);
 		
 		return new Tupla<List<Item>, Integer>(melhorCaso, melhorValor);
 	}
 
-	private List<Item> getOPT(Caminhao t, List<Item> G, MatrizEsparsa<Long, Item, Integer> M) {
+	private List<Item> getOPT(Caminhao t, List<Item> G, MatrizEsparsa<Item, Long, Integer> M) {
 		List<Item> melhorCaso = new ArrayList<>();
-		long i = (long) t.cargaMaxima;
+		long j = (long) t.cargaMaxima;
 		for (int k = G.size() - 1; k >= 0; k--) {
-			Item anterior = (k - 1) >= 0? G.get(k - 1) : null;
-			Item g = G.get(k);
-			if (M.get(i, g) - M.get(i, anterior) > 0) {
-				melhorCaso.add(g);
-				t.capacidadeAtual -= g.peso;
-				i = i - g.peso;
+			Item iAnterior = (k - 1) >= 0? G.get(k - 1) : null;
+			Item i = G.get(k);
+			if (M.get(i, j) - M.get(iAnterior, j) > 0) {
+				melhorCaso.add(i);
+				t.capacidadeAtual -= i.peso;
+				j = j - i.peso;
 			}
 		}
 		return melhorCaso;

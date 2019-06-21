@@ -22,8 +22,8 @@ public class Main {
 	}
 	
 	public static List<Item> criarItens() {
-		Item x = new Item("tenis", 2, 20);
-		Item y = new Item("bola", 4, 3);
+		Item x = new Item("tenis", 0, 20);
+		Item y = new Item("bola", 4, 0);
 		Item z = new Item("camisa", 5, 10);
 		Item k = new Item("geladeira", 100, 300);
 		
