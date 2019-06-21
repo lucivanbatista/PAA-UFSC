@@ -1,6 +1,7 @@
 package questao_03_mem.logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import questao_03_mem.model.*;
@@ -38,6 +39,9 @@ public class Main {
 	public static void main(String[] args) {
 		List<Caminhao> T = criarCaminhoes();
 		List<Item> G = criarItens();
+		
+		Collections.sort(G);
+		printItensNaoEntregues(G);
 
 		MochilaMultipla m = new MochilaMultipla();
 		m.multiplaCarga(T, G);
@@ -63,7 +67,7 @@ public class Main {
 		for(Item g : G) {
 			System.out.println("	" + g);
 			lucroPerdido += g.valor;
-		} 
+		}
 		System.out.println("\nLucro Total Perdido: " + lucroPerdido);
 	}
 

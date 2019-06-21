@@ -23,7 +23,7 @@ public class MochilaMultipla {
 			if(G.size() == 0) break;
 		    // Buscar a melhor solução:
 			Tupla<List<Item>, Integer> opt = mochila(t, G);
-			t.itensNaCarga = opt.lin;
+			t.itensNaCarga.addAll(opt.lin);
 			t.valorItensNaCarga = opt.col;
 		    // Um item nao pode estar em 2 caminhoes, entao iremos remover 
 			// os itens adicionados a este caminhao de G
@@ -42,7 +42,8 @@ public class MochilaMultipla {
 		// Para cada item:
 		for(Item g : G){
 			// Para cada capacidade possível da mochila (índice I)
-			for (long i = 1; i <= t.cargaMaxima; i++) {
+			long cargaMaxima = (long) t.cargaMaxima;
+			for (long i = 1; i <= cargaMaxima; i++) {
 				if (i < g.peso) {
 					// se não couber, usa o valor da linha de cima encontrado 
 					M.set(i, g, M.get(i, anterior));
@@ -60,14 +61,16 @@ public class MochilaMultipla {
 		// Extrai os itens da solução ótima (OPT)
 		List<Item> melhorCaso = getOPT(t, G, M);
 		
+		M.print();
+		
 		return new Tupla<List<Item>, Integer>(melhorCaso, melhorValor);
 	}
 
 	private List<Item> getOPT(Caminhao t, List<Item> G, MatrizEsparsa<Long, Item, Integer> M) {
 		List<Item> melhorCaso = new ArrayList<>();
 		long i = (long) t.cargaMaxima;
-		for (int k = G.size() - 1; k > 0; k--) {
-			Item anterior = G.get(k - 1);
+		for (int k = G.size() - 1; k >= 0; k--) {
+			Item anterior = (k - 1) >= 0? G.get(k - 1) : null;
 			Item g = G.get(k);
 			if (M.get(i, g) - M.get(i, anterior) > 0) {
 				melhorCaso.add(g);
