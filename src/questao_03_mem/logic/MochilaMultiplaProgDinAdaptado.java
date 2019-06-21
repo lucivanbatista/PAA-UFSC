@@ -14,12 +14,12 @@ public class MochilaMultiplaProgDinAdaptado {
 	public void multiplaCarga(List<Caminhao> T, List<Item> G) {
 		// Ordenar os caminhoes de T baseado nas suas cargas de forma crescente
 		Collections.sort(T);
-		// Ordenar os itens de G baseado nos seus pesos de forma crescente
+		// Ordenar os itens de G baseado nos seus pesos de forma decrescente
 		Collections.sort(G);
 
 		// Para cada caminhao com menor capacidade, faca
 		for(Caminhao t : T) {
-			// Validação para conjuntos de itens vazios
+			// Validacao para conjuntos de itens vazios
 			if(G.size() == 0) break;
 		    // Buscar a melhor solucao:
 			Tupla<List<Item>, Integer> opt = mochilaProgDinAdaptado(t, G);
