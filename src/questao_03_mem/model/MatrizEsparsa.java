@@ -2,6 +2,19 @@ package questao_03_mem.model;
 
 import java.util.HashMap;
 
+/**
+ * Nessa Implementação de Matriz Esparsa (ixj), utilizamos Generics do Java para 
+ * permitir que os índices <I, J> e o valor V sejam de qualquer tipo de dados.
+ * A Tupla representa os índices i e j na matriz de duas dimensões.
+ * Esta classe define um valor default que nunca é armazenado, na prática
+ * funciona como um valor de inicialização e nunca é armazenado na memória.  
+ * 
+ * @author Tarlis Portela 
+ *
+ * @param <I> Classe de objeto do índice "i"
+ * @param <J> Classe de objeto do índice "j"
+ * @param <V> Classe de objeto valor (das células da matriz)
+ */
 public class MatrizEsparsa<I,J,V> extends HashMap<Tupla<I,J>, V> {
 
 	private static final long serialVersionUID = -232567318161202729L;

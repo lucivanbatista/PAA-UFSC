@@ -19,6 +19,8 @@ public class MochilaMultipla {
 
 		// Para cada caminhao com menor capacidade, faca
 		for(Caminhao t : T) {
+			// Validação para conjuntos de itens vazios
+			if(G.size() == 0) break;
 		    // Buscar a melhor solução:
 			Tupla<List<Item>, Integer> opt = mochila(t, G);
 			t.itensNaCarga = opt.lin;
@@ -30,26 +32,32 @@ public class MochilaMultipla {
 	}
 	
 	public Tupla<List<Item>, Integer> mochila(Caminhao t, List<Item> G) {
-		
-		if(G.size() == 0){
-	        return new Tupla<List<Item>, Integer>(null, 0); // retorna nada
-		}
-		
+		// Implementação de uma Matriz Esparsa 
+		// (baseada em HashMap, futuramente poderia ser outra implementação mais eficiente)
 		MatrizEsparsa<Long, Item, Integer> M = new MatrizEsparsa<Long, Item, Integer>(0);
 		
+		// Representação do item anterior 
+		// (linha acima da atual na matrix, pois o índice J é o objeto Item)
 		Item anterior = null;
+		// Para cada item:
 		for(Item g : G){
+			// Para cada capacidade possível da mochila (índice I)
 			for (long i = 1; i <= t.cargaMaxima; i++) {
 				if (i < g.peso) {
+					// se não couber, usa o valor da linha de cima encontrado 
 					M.set(i, g, M.get(i, anterior));
 				} else {
+					// escolhe a melhor solução entre: a anterior calculada ou com  adição do item
 					M.set(i, g, max(M.get(i, anterior), g.valor + M.get(i - g.peso, anterior)));
 				}
 			}
+			// Atualiza o índice J (objeto)
 			anterior = g;
 		}
 
+		// Extrai o melhor valor (lucro) -> última posição da matriz 
 		int melhorValor = M.get((long) t.cargaMaxima, anterior);
+		// Extrai os itens da solução ótima (OPT)
 		List<Item> melhorCaso = getOPT(t, G, M);
 		
 		return new Tupla<List<Item>, Integer>(melhorCaso, melhorValor);

@@ -1,5 +1,9 @@
 package questao_03_mem.model;
 
+/**
+ * Clase para representar uma tupla de dois elementos genéricos.
+ * 
+ */
 public class Tupla<I,J> {
 	
 	public I lin;
@@ -12,7 +16,7 @@ public class Tupla<I,J> {
 	
 	@Override
 	public int hashCode() {
-		return 1;
+		return 1; // Pra forçar o HashMap usar o equals.
 	}
 
 	@Override
